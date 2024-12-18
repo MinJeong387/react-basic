@@ -6,7 +6,8 @@ import Create from "/src/components/Create.jsx";
 import Update from "/src/components/Update.jsx";
 
 function App() {
-  const [mode, setMode] = useState("WELCOME");
+  // function App(){} 함수는 div className="App" 안에 표시되는 모든 내용 담당하는 컴포넌트
+  const [mode, setMode] = useState("WELCOME"); // mode, id, nextId.. 는 컴포넌트가 아니라 컴포넌트의 상태(state)
   const [id, setId] = useState(null);
   const [nextId, setNextId] = useState(4);
   const [topics, setTopics] = useState([

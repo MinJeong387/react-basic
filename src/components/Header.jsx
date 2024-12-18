@@ -18,6 +18,7 @@ function Header({ title, onChangeMode }) {
     </header>
   );
 }
+
 Header.propTypes = {
   title: PropTypes.string,
   onChangeMode: PropTypes.func,

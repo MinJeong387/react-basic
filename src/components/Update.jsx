@@ -1,10 +1,11 @@
+import PropTypes from "prop-types";
 import { useState } from "react";
 
 function Update(props) {
   // title, body, onUpdate
   //   const title = props.title;
   //   const body = props.body;
-  const [title, setTitle] = useState(props.title);
+  const [title, setTitle] = useState(props.title); // props.title 을 title로 바꾸면 충돌나서 헷갈리므로 여기서는 그냥 props 쓸꺼래래
   const [body, setBody] = useState(props.body);
 
   return (
@@ -43,5 +44,11 @@ function Update(props) {
     </article>
   );
 }
+
+Update.propTypes = {
+  title: PropTypes.string,
+  body: PropTypes.string,
+  onUpdate: PropTypes.func,
+};
 
 export default Update;

@@ -1,5 +1,7 @@
+import PropTypes from "prop-types";
+
 function Header({ title, onChangeMode }) {
-  console.log("props", props.title);
+  console.log("props", title);
   return (
     <header>
       <h1>
@@ -7,14 +9,18 @@ function Header({ title, onChangeMode }) {
           href="/"
           onClick={(event) => {
             event.preventDefault();
-            props.onChangeMode();
+            onChangeMode();
           }}
         >
-          {props.title}
+          {title}
         </a>
       </h1>
     </header>
   );
 }
+Header.propTypes = {
+  title: PropTypes.string,
+  onChangeMode: PropTypes.func,
+};
 
 export default Header;

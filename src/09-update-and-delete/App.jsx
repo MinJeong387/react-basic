@@ -66,7 +66,8 @@ function App() {
         onCreate={(_title, _body) => {
           const newTopic = { id: nextId, title: _title, body: _body };
           const newTopics = [...topics];
-          newTopics.push(newTopic);
+
+          newTopics.push(newTopic); // 이 방식은 쓰지 마라! 실제 DOM직접 조작하지말고, setState 함수 쓰래
           setTopics(newTopics);
           setMode("READ");
           setId(nextId);
@@ -86,8 +87,8 @@ function App() {
     }
     content = (
       <Update
-        title={title}
-        body={body}
+        title={title} // Update 컴포넌트의 title prop에 실제 title 값 전달
+        body={body} // Update 컴포넌트의 body prop에 실제 body 값 전달
         onUpdate={(title, body) => {
           console.log(title, body);
           //    topics update

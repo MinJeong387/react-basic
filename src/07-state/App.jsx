@@ -1,5 +1,7 @@
 import { number } from "prop-types";
 import { useState } from "react"; // useState Hook 사용
+import PropTypes from "prop-types";
+
 function Header(props) {
   console.log("props", props.title);
   return (
@@ -18,6 +20,10 @@ function Header(props) {
     </header>
   );
 }
+Header.propTypes = {
+  title: PropTypes.string,
+  onChangeMode: PropTypes.func,
+};
 
 function Nav(props) {
   const lis = [];
@@ -44,6 +50,10 @@ function Nav(props) {
     </nav>
   );
 }
+Nav.propTypes = {
+  topics: PropTypes.array,
+  onChangeMode: PropTypes.func,
+};
 
 function Article(props) {
   return (
@@ -53,6 +63,10 @@ function Article(props) {
     </article>
   );
 }
+Article.propTypes = {
+  title: PropTypes.string,
+  body: PropTypes.string,
+};
 
 function App() {
   //   const mode = "WELCOME";

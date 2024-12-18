@@ -25,6 +25,7 @@ Header.propTypes = {
   title: PropTypes.string,
   onChangeMode: PropTypes.func,
 };
+
 // function Nav(props) {
 function Nav({ topics, onChangeMode }) {
   //  topics, onChangeMode
@@ -72,6 +73,7 @@ Nav.propTypes = {
   topics: PropTypes.array,
   onChangeMode: PropTypes.func,
 };
+
 function Article(props) {
   return (
     <article>

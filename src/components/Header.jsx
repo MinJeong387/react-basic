@@ -1,4 +1,4 @@
-function Header(props) {
+function Header({ title, onChangeMode }) {
   console.log("props", props.title);
   return (
     <header>

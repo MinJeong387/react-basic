@@ -31,18 +31,33 @@ function App() {
     }
     content = <Article title={title} body={body}></Article>;
     //  contextContol은 READ 모드일 때만 노출
+    //  <></> : Fragment -> 노드들을 단일 루트 로드로 묶기 위한 용도
     contextControl = (
-      <li>
-        <a
-          href={"/update" + id}
-          onClick={(event) => {
-            event.preventDefault(); //  이벤트 기본 동작 중지
-            setMode("UPDATE"); //  mode를 UPDATE로 변경
-          }}
-        >
-          Update
-        </a>
-      </li>
+      <>
+        <li>
+          <a
+            href={"/update" + id}
+            onClick={(event) => {
+              event.preventDefault(); //  이벤트 기본 동작 중지
+              setMode("UPDATE"); //  mode를 UPDATE로 변경
+            }}
+          >
+            Update
+          </a>
+        </li>
+        <li>
+          <input
+            type="button"
+            value="delete"
+            onClick={() => {
+              //    현재 선택된 topic id를 가진 요소를 삭제
+              const newTopics = topics.filter((topic) => topic.id !== id);
+              setTopics(newTopics);
+              setMode("WELCOME");
+            }}
+          />
+        </li>
+      </>
     );
   } else if (mode === "CREATE") {
     content = (
@@ -74,6 +89,17 @@ function App() {
         body={body}
         onUpdate={(title, body) => {
           console.log(title, body);
+          //    topics update
+          const newTopics = [...topics]; //  새 배열 생성
+          const updatedTopic = { id: id, title: title, body: body };
+          for (let i = 0; i < newTopics.length; i++) {
+            if (newTopics[i].id === id) {
+              newTopics[i] = updatedTopic;
+              break;
+            }
+          }
+          setTopics(newTopics);
+          setMode("READ");
         }}
       ></Update>
     );

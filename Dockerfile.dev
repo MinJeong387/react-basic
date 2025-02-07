@@ -1,7 +1,8 @@
 # 개발 모드 Dockerfile.dev
 # 실행할 때 -f 옵션으로 Dockerfile 이름 설정
 # Base Image 설정
-FROM node:20-alpine
+# FROM node:20-alpine
+FROM node:22.13-bullseye
 
 # 작업 디렉터리 설정
 WORKDIR /app
@@ -25,3 +26,10 @@ CMD ["npm", "run", "dev"]
 
 # build
 # docker build -t react-app-dev -f Dockerfile.dev .
+
+# 컨테이너 실행
+# docker run -it -p 5173:5173 --name react-app-dev react-app-dev
+# docker run -d -p 5173:5173 --name react-app-dev react-app-dev
+
+# dev모드는 기본적으로 localhost 접근만 허용
+# vite.config.js 파일 수정
